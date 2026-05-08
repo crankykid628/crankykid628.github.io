@@ -1,0 +1,603 @@
+/* ==========================================================
+   SKINS — visual presets that override base palette + decoration.
+   Each skin assumes data-theme="dark" on <html>.
+   Activated via data-skin="..." on <html>.
+   ========================================================== */
+
+/* Hide skin-specific decorations by default */
+.hero-bebop-craft,
+.hero-bebop-corner,
+.hero-corner-meta,
+.hero-scanlines { display: none; }
+
+
+/* ==========================================================
+   1) HTB — HackTheBox-inspired. Pure black, neon green,
+   monospace headers, dense info rails.
+   ========================================================== */
+
+[data-skin="htb"] {
+  --bg: #0a0d10;
+  --bg-soft: #0f1418;
+  --bg-card: #0d1116;
+  --bg-code: #07090b;
+  --border: #1a2128;
+  --border-soft: #141a1f;
+  --text: #c5d1d8;
+  --text-soft: #8a98a3;
+  --text-mute: #5a6770;
+  --accent: #9fef00;
+  --accent-soft: rgba(159, 239, 0, 0.10);
+  --tag-bg: #131a20;
+  --shadow: 0 0 0 1px rgba(159, 239, 0, 0.04);
+  --shadow-hover: 0 0 0 1px rgba(159, 239, 0, 0.25), 0 0 24px rgba(159, 239, 0, 0.08);
+  --font-serif: "JetBrains Mono", "Fira Code", monospace;
+}
+
+[data-skin="htb"] body { background: var(--bg); }
+
+[data-skin="htb"] .site-header {
+  background: rgba(10, 13, 16, 0.9);
+  border-bottom: 1px solid var(--border-soft);
+}
+[data-skin="htb"] .brand-mark {
+  background: var(--accent);
+  color: #000;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+}
+[data-skin="htb"] .brand { font-family: "JetBrains Mono", monospace; }
+[data-skin="htb"] .brand::before { content: "$ "; color: var(--accent); }
+[data-skin="htb"] .nav-link { font-family: "JetBrains Mono", monospace; }
+[data-skin="htb"] .nav-link.active { background: var(--accent); color: #000; border-radius: 4px; }
+
+[data-skin="htb"] .hero {
+  background: var(--bg);
+  border-bottom: 1px solid var(--accent);
+  height: 320px;
+}
+[data-skin="htb"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(159, 239, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 239, 0, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 80%);
+}
+[data-skin="htb"] .hero-scanlines {
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(159, 239, 0, 0.02) 3px,
+    rgba(159, 239, 0, 0.02) 4px
+  );
+}
+[data-skin="htb"] .hero-glyphs span {
+  color: rgba(159, 239, 0, 0.18);
+  font-family: "JetBrains Mono", monospace;
+}
+[data-skin="htb"] .hero-eyebrow { color: var(--accent); }
+[data-skin="htb"] .hero-eyebrow::before { background: var(--accent); }
+[data-skin="htb"] .hero-title {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-weight: 700;
+  font-size: 52px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+[data-skin="htb"] .hero-title .accent { font-style: normal; }
+[data-skin="htb"] .hero-title .accent::before { content: "{ "; opacity: 0.5; }
+[data-skin="htb"] .hero-title .accent::after { content: " }"; opacity: 0.5; }
+[data-skin="htb"] .hero-sub { color: var(--text-soft); font-family: "JetBrains Mono", monospace; font-size: 14px; }
+
+[data-skin="htb"] .hero-corner-meta {
+  display: flex;
+  position: absolute;
+  bottom: 14px;
+  left: 28px;
+  right: 28px;
+  z-index: 3;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+[data-skin="htb"] .post-card {
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  position: relative;
+  padding-left: 40px;
+}
+[data-skin="htb"] .post-card::before {
+  background: var(--accent);
+  width: 2px;
+  transform: scaleY(1);
+  opacity: 0.4;
+}
+[data-skin="htb"] .post-card::after {
+  content: "[" attr(data-index) "]";
+  position: absolute;
+  top: 28px;
+  left: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--accent);
+  opacity: 0.7;
+}
+[data-skin="htb"] .post-card:hover { border-color: var(--accent); }
+[data-skin="htb"] .post-card:hover::before { opacity: 1; }
+[data-skin="htb"] .post-title {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  font-size: 20px;
+}
+[data-skin="htb"] .post-card:hover .post-title { color: var(--accent); }
+[data-skin="htb"] .post-meta { color: var(--accent); opacity: 0.7; }
+
+[data-skin="htb"] .tag { border-radius: 2px; }
+[data-skin="htb"] .tag::before { content: "["; opacity: 0.5; margin-right: 2px; }
+[data-skin="htb"] .tag::after  { content: "]"; opacity: 0.5; margin-left: 2px; }
+
+[data-skin="htb"] .side-card { border-radius: 0; border: 1px solid var(--border); }
+[data-skin="htb"] .avatar { border-radius: 4px; background: var(--accent); color: #000; }
+[data-skin="htb"] .profile-name { font-family: "JetBrains Mono", monospace; }
+[data-skin="htb"] .profile-name::before { content: "> "; color: var(--accent); }
+[data-skin="htb"] .stat-num { color: var(--accent); font-family: "JetBrains Mono", monospace; }
+[data-skin="htb"] .side-title::before { background: var(--accent); }
+
+[data-skin="htb"] .page-title {
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+[data-skin="htb"] .page-title::before { content: "// "; color: var(--accent); }
+[data-skin="htb"] .archive-year-label { font-family: "JetBrains Mono", monospace; color: var(--accent); }
+
+
+/* ==========================================================
+   2) BEBOP — Hybrid: Bebop typography + HTB info-clarity +
+   Noir hairlines. No decorative graphics. Information first.
+   ========================================================== */
+
+[data-skin="bebop"] {
+  --bg: #07060a;
+  --bg-soft: #0e0c12;
+  --bg-card: transparent;
+  --bg-code: #0a090e;
+  --border: #221d28;
+  --border-soft: #16131b;
+  --text: #efe8de;
+  --text-soft: #a59e91;
+  --text-mute: #5c554c;
+  --accent: #e8513a;
+  --accent-soft: rgba(232, 81, 58, 0.10);
+  --tag-bg: transparent;
+  --shadow: none;
+  --shadow-hover: none;
+  --font-serif: "Oswald", "Inter", sans-serif;
+}
+
+[data-skin="bebop"] body { background: #000; }
+
+/* Header */
+[data-skin="bebop"] .site-header {
+  background: rgba(0, 0, 0, 0.92);
+  border-bottom: 1px solid var(--border);
+}
+[data-skin="bebop"] .brand-mark {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  border-radius: 50%;
+}
+[data-skin="bebop"] .brand {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+}
+[data-skin="bebop"] .nav-link {
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--text-soft);
+}
+[data-skin="bebop"] .nav-link:hover { color: var(--text); background: transparent; }
+[data-skin="bebop"] .nav-link.active {
+  color: var(--accent);
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Hero — strip ALL decoration, keep only the type */
+[data-skin="bebop"] .hero-grid,
+[data-skin="bebop"] .hero-glyphs,
+[data-skin="bebop"] .hero-bebop-craft,
+[data-skin="bebop"] .hero-bebop-corner,
+[data-skin="bebop"] .hero-corner-meta,
+[data-skin="bebop"] .hero-scanlines { display: none; }
+
+[data-skin="bebop"] .hero {
+  height: auto;
+  min-height: 360px;
+  background: #000;
+  border-bottom: 1px solid var(--border);
+  padding: 80px 0 56px;
+}
+[data-skin="bebop"] .hero-content {
+  position: static;
+  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+[data-skin="bebop"] .hero-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.3em;
+  margin-bottom: 18px;
+}
+[data-skin="bebop"] .hero-eyebrow::before { background: var(--accent); }
+
+[data-skin="bebop"] .hero-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 84px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+[data-skin="bebop"] .hero-title .accent {
+  display: block;
+  font-family: "Source Serif 4", "Playfair Display", serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  margin-top: 10px;
+}
+@media (max-width: 920px) {
+  [data-skin="bebop"] .hero-title { font-size: 52px; }
+  [data-skin="bebop"] .hero-title .accent { font-size: 16px; }
+}
+
+[data-skin="bebop"] .hero-sub {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-soft);
+  max-width: 540px;
+  margin-top: 22px;
+  padding-left: 14px;
+  border-left: 1px solid var(--accent);
+}
+
+/* Post cards — borderless rows, hairline rules, indexed */
+[data-skin="bebop"] .post-card {
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  padding: 28px 0;
+}
+[data-skin="bebop"] .post-card:last-child { border-bottom: 1px solid var(--border); }
+[data-skin="bebop"] .post-card::before { display: none; }
+[data-skin="bebop"] .post-card:hover { background: transparent; transform: none; box-shadow: none; }
+[data-skin="bebop"] .post-card::after {
+  content: attr(data-index);
+  position: absolute;
+  top: 28px;
+  right: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+}
+
+[data-skin="bebop"] .post-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+[data-skin="bebop"] .post-title {
+  font-family: "Source Serif 4", "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+[data-skin="bebop"] .post-card:hover .post-title { color: var(--accent); font-style: italic; }
+
+[data-skin="bebop"] .post-excerpt {
+  font-family: "Source Serif 4", serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+[data-skin="bebop"] .tag {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  padding: 2px 8px;
+}
+[data-skin="bebop"] .tag::before { content: ""; }
+[data-skin="bebop"] .tag:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Sidebar */
+[data-skin="bebop"] .side-card {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+[data-skin="bebop"] .avatar {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  border-radius: 50%;
+  font-family: "Oswald", sans-serif;
+}
+[data-skin="bebop"] .profile-name { font-family: "Source Serif 4", serif; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
+[data-skin="bebop"] .profile-role { color: var(--accent); }
+[data-skin="bebop"] .stat-num { font-family: "Oswald", sans-serif; color: var(--text); }
+[data-skin="bebop"] .stat-label { color: var(--text-mute); }
+[data-skin="bebop"] .side-title { color: var(--text-mute); }
+[data-skin="bebop"] .side-title::before { background: var(--accent); }
+
+/* Pages */
+[data-skin="bebop"] .page-eyebrow { color: var(--accent); }
+[data-skin="bebop"] .page-title {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-size: 56px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+[data-skin="bebop"] .archive-year-label {
+  font-family: "Oswald", sans-serif;
+  font-size: 38px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Single post */
+[data-skin="bebop"] .post-hero h1 {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  text-transform: none;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+}
+[data-skin="bebop"] .post-body { font-family: "Source Serif 4", serif; }
+[data-skin="bebop"] .post-body h2 {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  text-transform: none;
+}
+[data-skin="bebop"] .post-body h2::before { content: "❡ "; color: var(--accent); }
+
+/* Footer */
+[data-skin="bebop"] .site-footer { border-top: 1px solid var(--border); }
+
+
+/* ==========================================================
+   3) NOIR — Dark editorial. Black + warm red, hairline rules,
+   serif headlines, magazine-grade hierarchy.
+   ========================================================== */
+
+[data-skin="noir"] {
+  --bg: #0d0a08;
+  --bg-soft: #131110;
+  --bg-card: #100d0c;
+  --bg-code: #0a0807;
+  --border: #2a2420;
+  --border-soft: #1a1614;
+  --text: #efe8de;
+  --text-soft: #b0a799;
+  --text-mute: #6b6359;
+  --accent: #e8513a;
+  --accent-soft: rgba(232, 81, 58, 0.10);
+  --tag-bg: #1a1614;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
+  --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --font-serif: "Source Serif 4", "Playfair Display", Georgia, serif;
+}
+
+[data-skin="noir"] body { background: var(--bg); }
+
+[data-skin="noir"] .site-header {
+  background: rgba(13, 10, 8, 0.92);
+  border-bottom: 2px solid var(--accent);
+}
+[data-skin="noir"] .brand-mark {
+  background: var(--accent);
+  border-radius: 50%;
+  color: #fff;
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+}
+[data-skin="noir"] .brand { font-family: "Source Serif 4", serif; font-style: italic; font-size: 19px; }
+
+[data-skin="noir"] .nav-link {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+}
+[data-skin="noir"] .nav-link.active {
+  background: transparent;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  border-radius: 0;
+}
+
+[data-skin="noir"] .hero {
+  height: 440px;
+  background:
+    linear-gradient(90deg,
+      #000000 0%,
+      #050306 35%,
+      #0d0709 55%,
+      #1a0e0c 72%,
+      #2a1810 84%,
+      #3d2618 92%,
+      #5a3622 100%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+[data-skin="noir"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%,
+    rgba(255, 180, 120, 0.12) 0%,
+    rgba(232, 81, 58, 0.04) 40%,
+    transparent 70%);
+  pointer-events: none;
+}
+[data-skin="noir"] .hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 81, 58, 0.4) 80%, rgba(255, 180, 120, 0.5));
+  pointer-events: none;
+}
+[data-skin="noir"] .hero-grid,
+[data-skin="noir"] .hero-glyphs,
+[data-skin="noir"] .hero-scanlines,
+[data-skin="noir"] .hero-bebop-craft,
+[data-skin="noir"] .hero-bebop-corner,
+[data-skin="noir"] .hero-corner-meta { display: none; }
+
+[data-skin="noir"] .hero-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  letter-spacing: 0.3em;
+  font-size: 10px;
+}
+
+[data-skin="noir"] .hero-title {
+  font-family: "Source Serif 4", "Playfair Display", Georgia, serif;
+  font-size: 88px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+[data-skin="noir"] .hero-title .accent {
+  color: var(--accent);
+  font-style: italic;
+  display: block;
+}
+@media (max-width: 920px) {
+  [data-skin="noir"] .hero-title { font-size: 52px; }
+}
+
+[data-skin="noir"] .hero-sub {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text-soft);
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin-top: 18px;
+}
+
+[data-skin="noir"] .post-card {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 36px 0;
+}
+[data-skin="noir"] .post-card::before { display: none; }
+[data-skin="noir"] .post-card:hover { background: transparent; transform: none; box-shadow: none; }
+[data-skin="noir"] .post-card:hover .post-title { color: var(--accent); font-style: italic; }
+
+[data-skin="noir"] .post-meta {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+[data-skin="noir"] .post-title {
+  font-family: "Source Serif 4", "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+[data-skin="noir"] .post-excerpt {
+  font-family: "Source Serif 4", serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+[data-skin="noir"] .tag {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+[data-skin="noir"] .tag:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+[data-skin="noir"] .side-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+[data-skin="noir"] .avatar {
+  background: var(--accent);
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+}
+[data-skin="noir"] .profile-name { font-family: "Source Serif 4", serif; font-style: italic; }
+[data-skin="noir"] .stat-num { font-family: "Source Serif 4", serif; color: var(--accent); }
+
+[data-skin="noir"] .page-title {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-size: 56px;
+}
+[data-skin="noir"] .archive-year-label {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  color: var(--accent);
+}
+
+[data-skin="noir"] .post-hero h1 { font-family: "Source Serif 4", serif; font-style: italic; }
+[data-skin="noir"] .post-body h2::before { content: "❡ "; color: var(--accent); }
