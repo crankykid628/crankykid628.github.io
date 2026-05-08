@@ -21,6 +21,22 @@
 
 const POSTS = [
   {
+  slug: "ret2libc-writeup",
+  title: "Ret2libc — 第一次手刻 ROP",
+  date: "2026-05-08",
+  excerpt: "從 leak libc 到打造完美 payload 的全紀錄。",
+  tags: ["pwn", "writeup", "rop"],
+  readTime: 8,
+  body: [
+    { type: "p", text: "今天的題目是..." },
+    { type: "h2", text: "靜態分析" },
+    { type: "p", text: "checksec 看一下..." },
+    { type: "code", lang: "bash", text: "$ checksec ./pwn\nArch:     amd64-64-little\nRELRO:    Partial RELRO\nStack:    No canary found" },
+    { type: "h2", text: "解題思路" },
+    { type: "p", text: "..." },
+  ],
+},
+  {
     slug: "hello-world",
     title: "Hello, world — 關於這個部落格",
     date: "2026-05-03",
