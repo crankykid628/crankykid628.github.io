@@ -311,10 +311,20 @@ img { max-width: 100%; display: block; }
   font-size: 12px;
   color: var(--text-mute);
   font-family: var(--font-mono);
-  margin-bottom: 10px;
   letter-spacing: 0.02em;
 }
 .post-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-mute); }
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-soft);
+}
 
 .post-title {
   font-family: var(--font-serif);
@@ -337,6 +347,8 @@ img { max-width: 100%; display: block; }
 }
 
 .post-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.post-footer .post-tags { margin-left: auto; }
 
 .tag {
   display: inline-flex;
