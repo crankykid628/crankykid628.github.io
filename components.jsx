@@ -105,17 +105,17 @@ function PostCard({ post, onOpen, onTag, index }) {
   const idx = String((index ?? 0) + 1).padStart(2, "0");
   return (
     <article className="post-card fade-up" data-index={idx} onClick={() => onOpen(post)}>
-      <div className="post-meta">
-        <span>{formatDate(post.date)}</span>
-        <span className="dot"/>
-        <span>{post.readTime} min read</span>
-      </div>
       <h2 className="post-title">{post.title}</h2>
       <p className="post-excerpt">{post.excerpt}</p>
-      <div className="post-tags">
-        {post.tags.map(t => (
-          <span key={t} className="tag" onClick={(e) => { e.stopPropagation(); onTag(t); }}>{t}</span>
-        ))}
+      <div className="post-footer">
+        <div className="post-meta">
+          <span>{formatDate(post.date)}</span>
+        </div>
+        <div className="post-tags">
+          {post.tags.map(t => (
+            <span key={t} className="tag" onClick={(e) => { e.stopPropagation(); onTag(t); }}>{t}</span>
+          ))}
+        </div>
       </div>
     </article>
   );
@@ -353,8 +353,6 @@ function PostPage({ slug, onNav }) {
         <header className="post-hero">
           <div className="post-meta">
             <span>{formatDate(post.date)}</span>
-            <span className="dot"/>
-            <span>{post.readTime} min read</span>
             <span className="dot"/>
             <span>by {window.BLOG_CONFIG.name}</span>
           </div>
